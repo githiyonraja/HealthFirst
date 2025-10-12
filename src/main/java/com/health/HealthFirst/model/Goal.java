@@ -1,23 +1,27 @@
 package com.health.HealthFirst.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Goal {
     @Id
-    private long goalId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long goalId;
+
+    @Column(name = "primary_goal")
     private String primaryGoal;
-    private double goalWeight;
+
+    @Column(name = "goal_weight")
+    private Double goalWeight;
+
+    public Goal(String primaryGoal, Double goalWeight) {
+        this.primaryGoal = primaryGoal;
+        this.goalWeight = goalWeight;
+    }
 
     public long getGoalId() {
         return goalId;

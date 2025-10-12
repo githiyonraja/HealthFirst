@@ -1,7 +1,6 @@
 package com.health.HealthFirst.service;
 
 import com.health.HealthFirst.model.Goal;
-import com.health.HealthFirst.model.User;
 import com.health.HealthFirst.repository.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,13 +12,13 @@ public class GoalServiceImpl implements GoalService{
     private GoalRepository goalRepo;
 
     @Override
-    public Optional<Goal> getPrimGoalByUserId(User userId) {
-        return goalRepo.findById(userId);
+    public Optional<Goal> getPrimGoalById(Long goalId) {
+        return goalRepo.findById(goalId);
     }
 
     @Override
-    public Optional<Goal> getGoalWeightByUserId(User userId) {
-        return goalRepo.findById(userId);
+    public Optional<Goal> getGoalWeightById(Long goalId) {
+        return goalRepo.findById(goalId);
     }
 
 //    @Override

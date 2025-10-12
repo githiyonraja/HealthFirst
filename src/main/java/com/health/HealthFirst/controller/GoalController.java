@@ -1,7 +1,6 @@
 package com.health.HealthFirst.controller;
 
 import com.health.HealthFirst.model.Goal;
-import com.health.HealthFirst.model.User;
 import com.health.HealthFirst.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ public class GoalController {
     private GoalService service;
 
     @GetMapping("/Goal/{id}")
-    public ResponseEntity<Optional<Goal>> getGoalByUserId(User userId){
-        return new ResponseEntity<>(service.getPrimGoalByUserId(userId), HttpStatus.OK);
+    public ResponseEntity<Optional<Goal>> getGoalByUserId(Long goalId){
+        return new ResponseEntity<>(service.getPrimGoalById(goalId), HttpStatus.OK);
     }
 }
