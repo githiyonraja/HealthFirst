@@ -1,25 +1,38 @@
 package com.health.HealthFirst.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class  User {
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "sequenceGenerator"
+    )
+    @SequenceGenerator(name = "sequenceGenerator")
     @Id
-    private int userId;
+    private Integer userId;
+
+    @Column(name = "last_name")
     private String lastname;
+
+    @Column(name = "first_name")
     private String firstname;
-    private int age;
-    private char gender;
-    private double weight;
-    private double height;
+
+    @Column(name = "age")
+    private Integer age;
+
+    @Column(name = "gender")
+    private Character gender;
+
+    @Column(name = "weight")
+    private Double weight;
+
+    @Column(name = "height")
+    private Double height;
 
     public int getUserId() {
         return userId;
@@ -76,5 +89,7 @@ public class User {
     public void setHeight(double height) {
         this.height = height;
     }
+
+
 
 }

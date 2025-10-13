@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-//@RequestMapping()
+@RestController
+@RequestMapping("/api")
 public class HomeController {
-    //@RequestMapping("/")
+    @GetMapping("/")
     public String greet(){
-        return "Hello!!";
+        return "HEALTH FIRST!!";
     }
 }

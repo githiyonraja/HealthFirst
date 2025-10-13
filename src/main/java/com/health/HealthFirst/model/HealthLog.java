@@ -13,10 +13,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class HealthLog {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY,
+            generator = "sequenceGenerator"
+    )
+    @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "Id")
     private long id;
+
+    @Column(nullable = false)
     private LocalDate date;
-    private int steps;
+    private int stepsCovered;
     private double caloriesBurned;
     private double sleepHours;
     @ManyToOne
@@ -39,12 +46,12 @@ public class HealthLog {
         this.date = date;
     }
 
-    public int getSteps() {
-        return steps;
+    public int getStepsCovered() {
+        return stepsCovered;
     }
 
-    public void setSteps(int steps) {
-        this.steps = steps;
+    public void setStepsCovered(int stepsCovered) {
+        this.stepsCovered = stepsCovered;
     }
 
     public double getCaloriesBurned() {
@@ -69,5 +76,17 @@ public class HealthLog {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "HealthLog{" +
+                "id=" + id +
+                ", date=" + date +
+                ", stepsCovered=" + stepsCovered +
+                ", caloriesBurned=" + caloriesBurned +
+                ", sleepHours=" + sleepHours +
+                ", user=" + user +
+                '}';
     }
 }

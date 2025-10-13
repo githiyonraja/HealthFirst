@@ -14,8 +14,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/goals")
 public class GoalController {
-    @Autowired
-    private GoalService service;
+    GoalService service;
+
+    public GoalController(GoalService service) {
+        this.service = service;
+    }
 
     @GetMapping("/Goal/{id}")
     public ResponseEntity<Optional<Goal>> getGoalByUserId(Long goalId){

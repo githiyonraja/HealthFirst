@@ -12,8 +12,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/healthLog")
 public class HealthLogController {
-    @Autowired
-    private HealthLogServiceImpl service;
+
+    HealthLogServiceImpl service;
 
     public HealthLogController(HealthLogServiceImpl service){
         this.service = service;

@@ -7,22 +7,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
-    @Autowired(required = true)
-    private UserServiceImpl service;
+
+    UserServiceImpl service;
 
     public UserController(UserServiceImpl service){
         this.service = service;
     }
 
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers(){
-//        return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
-//    }
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers(){
+        return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
+    }
 
     @GetMapping("/user/{id}")
     public ResponseEntity<Optional<User>> getUserById(@PathVariable int id){

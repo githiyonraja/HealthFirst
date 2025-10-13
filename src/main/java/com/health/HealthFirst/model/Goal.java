@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Goal {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "id")
     private Long goalId;
 
     @Column(name = "primary_goal")
@@ -17,6 +19,13 @@ public class Goal {
 
     @Column(name = "goal_weight")
     private Double goalWeight;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "user_Id",
+            nullable = false
+    )
+    private User user;
 
     public Goal(String primaryGoal, Double goalWeight) {
         this.primaryGoal = primaryGoal;
@@ -45,5 +54,15 @@ public class Goal {
 
     public void setGoalWeight(double goalWeight) {
         this.goalWeight = goalWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "Goal{" +
+                "goalId=" + goalId +
+                ", primaryGoal='" + primaryGoal + '\'' +
+                ", goalWeight=" + goalWeight +
+                ", user=" + user +
+                '}';
     }
 }
