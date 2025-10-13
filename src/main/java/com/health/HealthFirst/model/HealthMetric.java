@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class HealthMetrics {
+public class HealthMetric {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,

@@ -1,13 +1,12 @@
 package com.health.HealthFirst.service;
 
-import com.health.HealthFirst.model.HealthMetrics;
+import com.health.HealthFirst.dto.HealthMetricDTO;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface HealthMetricService {
-    HealthMetrics saveMetrics(HealthMetrics healthMetrics);
-    Optional<HealthMetrics> getMetricsById(Integer id);
+    HealthMetricDTO saveMetrics(HealthMetricDTO healthMetricDTO);
+    Optional<HealthMetricDTO> getMetricsById(Integer id);
     void deleteMetrics(Integer id);
 
     Integer getHeartRateById(Integer id);
