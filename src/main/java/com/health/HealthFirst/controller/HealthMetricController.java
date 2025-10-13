@@ -1,6 +1,5 @@
 package com.health.HealthFirst.controller;
 
-import com.health.HealthFirst.model.HealthMetrics;
 import com.health.HealthFirst.service.HealthMetricSerciveImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @RestController
-@RequestMapping("api/metrics")
+@RequestMapping("/api")
 public class HealthMetricController {
 
     HealthMetricSerciveImpl healthMetricSercive;
@@ -22,7 +19,7 @@ public class HealthMetricController {
     }
 
     @GetMapping("/metrics/{id}")
-    public ResponseEntity<Optional<HealthMetrics>> getHeartRateById(@PathVariable Integer id){
+    public ResponseEntity<Integer> getHeartRateById(@PathVariable Integer id){
         return new ResponseEntity<>(healthMetricSercive.getHeartRateById(id), HttpStatus.OK);
     }
 }
