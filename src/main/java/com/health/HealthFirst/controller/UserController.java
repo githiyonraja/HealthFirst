@@ -1,8 +1,8 @@
 package com.health.HealthFirst.controller;
 
+import com.health.HealthFirst.dto.UserDTO;
 import com.health.HealthFirst.model.User;
 import com.health.HealthFirst.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +35,8 @@ public class UserController {
         }
     }
     @PostMapping("/signup")
-    public ResponseEntity<User> signUp(@RequestBody User user){
-        return new ResponseEntity<>(service.signUp(user),HttpStatus.CREATED);
+    public ResponseEntity<UserDTO> signUp(@RequestBody UserDTO userDTO){
+        return new ResponseEntity<>(service.signUp(userDTO),HttpStatus.CREATED);
     }
     @DeleteMapping("/userDelete/{id}")
     public ResponseEntity<Boolean> deleteAccount(@PathVariable int id){

@@ -1,19 +1,10 @@
 package com.health.HealthFirst.dto;
 
 public class HealthMetricDTO {
-    private Integer id;
+
     private Integer heartRate;
     private Integer sPO2;
     private Integer stress;
-    private Integer userId; // just store user id reference
-
-    public Integer getid() {
-        return id;
-    }
-
-    public void setMetricId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getHeartRate() {
         return heartRate;
@@ -39,11 +30,4 @@ public class HealthMetricDTO {
         this.stress = stress;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 }
