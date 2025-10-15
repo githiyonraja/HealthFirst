@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class  User {
     @GeneratedValue(
@@ -28,11 +26,35 @@ public class  User {
     @Column(name = "gender")
     private Character gender;
 
-    @Column(name = "weight")
-    private Double weight;
+    @Column(name = "username", unique = true)
+    private String username;
 
-    @Column(name = "height")
-    private Double height;
+    @Column(name = "password")
+    private String password;
+
+    @Column(unique = true)
+    private String email;
+
+    public User() {
+
+    }
+
+    public User(Integer userId, String lastname, String firstname, Integer age, Character gender, String username, String password, String email) {
+        this.userId = userId;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.age = age;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public int getUserId() {
         return userId;
@@ -74,22 +96,27 @@ public class  User {
         this.gender = gender;
     }
 
-    public double getWeight() {
-        return weight;
+    public String getUsername() {
+        return username;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public double getHeight() {
-        return height;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
