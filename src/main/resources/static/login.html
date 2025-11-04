@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthFirst - Login</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script defer src="/login.js"></script>
+  </head>
+  <body>
+    <div class="container auth">
+      <h1>HealthFirst</h1>
+      <form id="loginForm">
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required />
+        </div>
+        <div class="row">
+          <button type="submit" class="btn primary">Login</button>
+          <a class="btn" href="/signup.html" style="text-decoration:none;align-items:center;display:inline-flex">Sign Up</a>
+        </div>
+        <div id="loginError" class="error" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+  </body>
+  </html>
+
+
