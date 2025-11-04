@@ -31,11 +31,15 @@ public class SecurityConfig {
                         "/login",
                         "/", "/error",
                         "/login.html",
+                        "/goals.html",
                         "/signup.html",
                         "/index.html",
                         "/styles.css",
                         "/app.js",
+                        "/goals.js",
                         "/signup.js",
+                        "/profile.html",
+                        "/profile.js",
                         "/login.js",
                         "/favicon.ico"
                 ).permitAll()

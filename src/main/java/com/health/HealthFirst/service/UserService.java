@@ -1,6 +1,7 @@
 package com.health.HealthFirst.service;
 
 import com.health.HealthFirst.dto.UserDTO;
+import com.health.HealthFirst.dto.UserProfileDTO;
 import com.health.HealthFirst.model.User;
 
 import java.util.Optional;
@@ -10,4 +11,5 @@ public interface UserService {
     UserDTO signUp(UserDTO userDTO);
     boolean deleteAccount(int id);
     User registerUser(String username, String email, String password);
+    User updateCurrentUserProfile(UserProfileDTO profileDTO);
 }

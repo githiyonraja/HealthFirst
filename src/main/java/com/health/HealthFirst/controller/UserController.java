@@ -1,11 +1,13 @@
 package com.health.HealthFirst.controller;
 
 import com.health.HealthFirst.dto.UserDTO;
+import com.health.HealthFirst.dto.UserProfileDTO;
 import com.health.HealthFirst.model.User;
 import com.health.HealthFirst.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.Optional;
 
@@ -40,6 +42,19 @@ public class UserController {
     @DeleteMapping("/userDelete/{id}")
     public ResponseEntity<Boolean> deleteAccount(@PathVariable int id){
         return new ResponseEntity<>(service.deleteAccount(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/user/me")
+    public ResponseEntity<User> getCurrentUser(){
+        return service.findByUserName(org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication().getName())
+                .map(ResponseEntity::ok)
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/user/profile")
+    public ResponseEntity<User> updateProfile(@Valid @RequestBody UserProfileDTO profileDTO){
+        User updated = service.updateCurrentUserProfile(profileDTO);
+        return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
 }

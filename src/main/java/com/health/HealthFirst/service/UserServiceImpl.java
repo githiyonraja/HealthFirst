@@ -1,10 +1,13 @@
 package com.health.HealthFirst.service;
 
 import com.health.HealthFirst.dto.UserDTO;
+import com.health.HealthFirst.dto.UserProfileDTO;
 import com.health.HealthFirst.model.User;
 import com.health.HealthFirst.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -68,5 +71,20 @@ public class UserServiceImpl implements UserService {
 
     public Optional<User> findByUserName(String username){
         return userRepo.findByUsername(username);
+    }
+
+    @Override
+    public User updateCurrentUserProfile(UserProfileDTO profileDTO) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User user = userRepo.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setFirstname(profileDTO.firstname);
+        user.setLastname(profileDTO.lastname);
+        user.setAge(profileDTO.age);
+        user.setGender(profileDTO.gender);
+        if (profileDTO.email != null && !profileDTO.email.isBlank()) {
+            user.setEmail(profileDTO.email);
+        }
+        return userRepo.save(user);
     }
 }
